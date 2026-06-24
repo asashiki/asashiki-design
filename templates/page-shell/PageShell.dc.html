@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Asashiki 页面外壳" description="新页面起点：导航 + 衬线 Hero + 内容区 + 页脚，墨白为底、樱粉点缀" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+</helmet>
+<div data-theme="light" data-palette="sakura" style="font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased">
+
+  <nav style="position:sticky;top:0;z-index:300;background:var(--surface-overlay);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)">
+    <div style="max-width:1080px;margin:0 auto;padding:0 28px;height:60px;display:flex;align-items:center;gap:22px">
+      <span style="display:inline-flex;align-items:center;gap:11px">
+        <span style="width:30px;height:30px;border-radius:9px;background:var(--accent-soft);display:inline-flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700">浅</span>
+        <b style="font:var(--d-title);font-size:19px">Asashiki</b>
+      </span>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">功能</a>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">文档</a>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">GitHub</a>
+      <span style="flex:1"></span>
+      <button class="ad-btn ad-btn--ghost ad-btn--sm">登录</button>
+      <button class="ad-btn ad-btn--primary ad-btn--sm">开始使用</button>
+    </div>
+  </nav>
+
+  <header style="position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:var(--glow-wash);pointer-events:none"></div>
+    <div style="position:relative;max-width:1080px;margin:0 auto;padding:84px 28px 60px">
+      <div class="ad-eyebrow">ASASHIKI · 浅仪式</div>
+      <h1 style="font:var(--d-hero);letter-spacing:-0.014em;margin:18px 0 0;max-width:18ch">在这里写下<span style="font-style:normal;background:var(--glow);background-size:100% 42%;background-position:0 88%;background-repeat:no-repeat;padding:0 4px">一句话</span>定调。</h1>
+      <p style="font:var(--t-lead);color:var(--text-2);max-width:56ch;margin:22px 0 28px">用这个外壳起一个新页面：墨白为底，樱粉只在该出现的地方出现。替换标题、正文与下方卡片即可。</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="ad-btn ad-btn--primary">主操作</button>
+        <button class="ad-btn ad-btn--ghost">次要操作</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1080px;margin:0 auto;padding:24px 28px 80px">
+    <div style="display:flex;align-items:baseline;gap:16px;margin:36px 0 22px">
+      <span style="font:var(--t-display)">内容区</span>
+      <span style="font:var(--t-caption);color:var(--text-3);letter-spacing:.1em;text-transform:uppercase">Section</span>
+      <span style="flex:1;height:6px;background:var(--stripe);border-radius:3px;opacity:.8"></span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <div class="ad-card ad-card--raised">
+        <div class="ad-card__title">卡片标题一</div>
+        <div class="ad-card__sub">一句话副标</div>
+        <p class="ad-card__body" style="margin:12px 0 0">靠 1px 边框分层，阴影只给抬升元素。把这段替换成你的内容。</p>
+      </div>
+      <div class="ad-card ad-card--raised ad-card--deco">
+        <div class="ad-card__title">卡片标题二</div>
+        <div class="ad-card__sub">右上 −12° 斜纹装饰</div>
+        <p class="ad-card__body" style="margin:12px 0 0">signature 斜切是全站唯一记忆点，一屏 ≤ 3 处。</p>
+      </div>
+      <div class="ad-card ad-card--raised ad-card--glow">
+        <div class="ad-card__title">卡片标题三</div>
+        <div class="ad-card__sub">顶部 --glow 柔光带</div>
+        <p class="ad-card__body" style="margin:12px 0 0">同源柔光，不是双拼撞色渐变，单屏 ≤ 2 处。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer style="border-top:1px solid var(--border)">
+    <div style="max-width:1080px;margin:0 auto;padding:26px 28px;display:flex;align-items:center;gap:16px;font:var(--t-caption);color:var(--text-3)">
+      <span>浅仪式 Asashiki</span>
+      <span style="flex:1"></span>
+      <a href="#" style="color:var(--text-2);text-decoration:none">文档</a>
+      <a href="#" style="color:var(--text-2);text-decoration:none">GitHub</a>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="状态色 Status" subtitle="沉稳一档 · 实色 + soft 底，成对使用" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 22px; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .grp { display: flex; flex-direction: column; gap: 8px; }
+  .chips { display: flex; gap: 6px; }
+  .chip { width: 58px; height: 48px; border-radius: var(--radius-m); border: 1px solid var(--border); }
+  .nm { font: var(--t-label); }
+  .tag { display:inline-block; font: var(--t-label); padding: 4px 10px; border-radius: var(--radius-s); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="grp"><div class="nm">success</div><div class="chips"><div class="chip" style="background:var(--success)"></div><div class="chip" style="background:var(--success-soft)"></div></div><span class="tag" style="background:var(--success-soft);color:var(--success)">同步成功</span></div>
+    <div class="grp"><div class="nm">warning</div><div class="chips"><div class="chip" style="background:var(--warning)"></div><div class="chip" style="background:var(--warning-soft)"></div></div><span class="tag" style="background:var(--warning-soft);color:var(--warning)">待处理</span></div>
+    <div class="grp"><div class="nm">danger</div><div class="chips"><div class="chip" style="background:var(--danger)"></div><div class="chip" style="background:var(--danger-soft)"></div></div><span class="tag" style="background:var(--danger-soft);color:var(--danger)">连接失败</span></div>
+    <div class="grp"><div class="nm">info</div><div class="chips"><div class="chip" style="background:var(--info)"></div><div class="chip" style="background:var(--info-soft)"></div></div><span class="tag" style="background:var(--info-soft);color:var(--info)">有新消息</span></div>
+  </div>
+</body>
+</html>

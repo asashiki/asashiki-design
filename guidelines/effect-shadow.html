@@ -1,0 +1,24 @@
+<!-- @dsCard group="Effects" viewport="700x172" name="阴影 Shadow" subtitle="靠 1px 边框分层，阴影只给真正抬升的元素" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg-subtle); color: var(--text); padding: 28px 22px; }
+  .row { display: flex; gap: 26px; }
+  .item { text-align: center; }
+  .box { width: 92px; height: 64px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l); margin-bottom: 12px; }
+  .item b { font: var(--t-label); display: block; }
+  .item code { font-family: var(--mono); font-size: 10.5px; color: var(--text-3); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-xs)"></div><b>xs</b><code>--shadow-xs</code></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-s)"></div><b>s</b><code>--shadow-s</code></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow)"></div><b>m · 最常用</b><code>--shadow</code></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-l)"></div><b>l · 弹层</b><code>--shadow-l</code></div>
+  </div>
+</body>
+</html>

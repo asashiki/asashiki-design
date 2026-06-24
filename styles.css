@@ -1,0 +1,9 @@
+/* ============================================================
+   Asashiki Design · styles.css  —— 唯一入口（消费方只 link 这一个文件）
+   仅 @import 列表，不写任何规则。
+   ============================================================ */
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/scale.css";
+@import "components/components.css";

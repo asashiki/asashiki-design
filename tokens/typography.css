@@ -1,0 +1,42 @@
+/* ============================================================
+   Asashiki Design · typography.css  v2.0
+   ------------------------------------------------------------
+   两套字族：
+   - --font      系统无衬线栈：所有 UI / 正文 / 组件（快、原生、中日友好）
+   - --font-serif Newsreader 衬线：hero / 区块大标题 / 博客正文（编辑感）
+   - --mono      系统等宽栈：代码 / ID / 时间戳 / 数字
+   原则：中日同字号，靠留白与文字色分层，不靠加粗堆叠。一屏 ≤ 3 个字阶。
+   ============================================================ */
+:root {
+  /* ── 字族 ──────────────────────────────────── */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+          "PingFang SC", "Hiragino Sans", "Microsoft YaHei UI",
+          "Noto Sans SC", sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", "Songti SC",
+          "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono",
+          Consolas, monospace; /* @kind font */
+
+  /* ── 无衬线字阶（UI / 正文 · 最常用）──────────── */
+  --t-hero:    700 42px/1.12 var(--font);   /* 大标题 · 仅 hero 区 */
+  --t-display: 700 28px/1.25 var(--font);   /* 区块大标题 */
+  --t-title:   650 19px/1.40 var(--font);   /* 卡片/弹层标题 */
+  --t-lead:    400 17px/1.55 var(--font);   /* 引导文/Hero 副文 */
+  --t-body:    400 14px/1.65 var(--font);   /* 正文 · 最常用 */
+  --t-small:   400 13px/1.55 var(--font);   /* 辅助说明 */
+  --t-caption: 400 12px/1.50 var(--font);   /* 注释/时间戳 */
+  --t-label:   600 12px/1.40 var(--font);   /* 表单标签/tag */
+  --t-mono:    400 13px/1.60 var(--mono);   /* 代码/ID/时间戳 */
+
+  /* ── 衬线字阶（hero / 编辑 · 克制使用）──────────
+     衬线在大字号配略轻字重(500)更优雅、更「惊艳」。 */
+  --d-hero:    500 50px/1.08 var(--font-serif);  /* 衬线大标题 · 全站仅一处 */
+  --d-display: 500 34px/1.20 var(--font-serif);  /* 衬线区块标题 */
+  --d-title:   500 23px/1.35 var(--font-serif);  /* 衬线小标题 */
+  --d-prose:   420 19px/1.78 var(--font-serif);  /* 博客正文（长文阅读）*/
+  --d-quote:   400 24px/1.55 var(--font-serif);  /* 大引用 */
+
+  /* ── 字间距微调 ──────────────────────────────── */
+  --tracking-tight: -0.014em;  /* 大标题收紧 */
+  --tracking-wide:  0.14em;    /* eyebrow / label 全大写时 */
+}

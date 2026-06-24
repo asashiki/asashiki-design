@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="印象色 · 樱 Accent" subtitle="唯一主色 · 面积 ≤ 12% · 只给按钮/链接/焦点/小标记" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 22px; }
+  .row { display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap; }
+  .sw { width: 104px; }
+  .chip { height: 62px; border-radius: var(--radius-m); border: 1px solid var(--border); }
+  .nm { font: var(--t-label); margin-top: 8px; }
+  .cd { font-family: var(--mono); font-size: 10.5px; color: var(--text-3); margin-top: 2px; }
+  .pill { display:inline-flex; align-items:center; gap:6px; background: var(--accent); color: var(--on-accent); font: var(--t-label); padding: 7px 14px; border-radius: var(--radius-m); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--accent)"></div><div class="nm">accent</div><div class="cd">#e85d97</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-hover)"></div><div class="nm">hover</div><div class="cd">--accent-hover</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-active)"></div><div class="nm">active</div><div class="cd">--accent-active</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-soft)"></div><div class="nm">soft</div><div class="cd">--accent-soft</div></div>
+    <div class="sw"><div class="chip" style="background:var(--accent-line)"></div><div class="nm">line</div><div class="cd">--accent-line</div></div>
+    <div class="sw" style="width:auto"><span class="pill">主按钮 · on-accent</span></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+/* ============================================================
+   Asashiki Design · colors.css  v2.0  「墨と桜 · Ink & Sakura」
+   ------------------------------------------------------------
+   v2 取向：中性墨白为底，印象色（樱粉）只作克制点缀。
+   - 骨架层 (bg / surface / border / text) 一律中性暖灰，不带色相倾向。
+   - 印象色只出现在 accent / 链接 / 焦点环 / 小标记，面积 ≤ 屏幕 12%。
+   - 四季 = 只换 accent 家族的「配色补丁」，骨架保持中性 → 专业感不丢。
+   - data-palette="sumi" = 纯墨黑白模式（连 accent 都降为墨灰）。
+   规则：组件里不写死任何 hex，只用这里的变量。
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   默认 · 浅色 · 中性墨白骨架 + 樱粉点缀
+   ══════════════════════════════════════════════════════════ */
+:root,
+[data-theme="light"] {
+  /* ── 背景层（中性暖灰，无色相）──────────────── */
+  --bg:               #ffffff;   /* 页面主底 */
+  --bg-subtle:        #f7f6f5;   /* 分区底 · 暖白纸 */
+  --bg-tint:          #f3f2f1;   /* 输入/选中浅底 · 中性 */
+  --bg-tint-2:        #eeedf0;   /* 次级浅底 · 微凉中性 */
+  --surface:          #ffffff;   /* 卡片/面板 */
+  --surface-raised:   #ffffff;   /* 抬升表面（靠阴影抬，不靠变色）*/
+  --surface-sunken:   #faf9f8;   /* 内凹底 · 代码块/引用 */
+  --surface-overlay:  rgba(255,255,255,.82); /* 毛玻璃浮层底 */
+
+  /* ── 描边（中性暖灰 hairline）──────────────── */
+  --border:           #eae8e6;   /* 默认 1px 边框 */
+  --border-strong:    #d9d6d2;   /* 强调边框/分割 */
+  --border-focus:     var(--accent);
+
+  /* ── 文字（暖墨三档）─────────────────────── */
+  --text:             #221f26;   /* 正文 · 暖墨近黑 */
+  --text-2:           #6b6570;   /* 次级/说明 */
+  --text-3:           #a7a1aa;   /* 占位/时间戳 */
+  --text-invert:      #ffffff;   /* 色块上的文字 */
+  --text-link:        var(--accent);
+
+  /* ── 印象色 · 樱粉（克制，面积 ≤ 12%）──────── */
+  --accent:           #e85d97;   /* 主按钮/链接/焦点 · 樱 */
+  --accent-hover:     #d84d88;
+  --accent-active:    #c33f79;
+  --accent-soft:      #fbe2ee;   /* 标签底/高亮笔 · 极浅樱 */
+  --accent-line:      #f4c5dc;   /* 印象色描边 */
+  --on-accent:        #ffffff;
+
+  /* ── 次强调 · 粉紫蓝（默认很少用，备用层级）── */
+  --accent-2:         #7b7ce0;
+  --accent-2-hover:   #6a6bd2;
+  --accent-2-soft:    #e9e9fb;
+  --on-accent-2:      #ffffff;
+
+  /* ── 状态色（沉稳一档，非高饱和）──────────── */
+  --success:          #4fa97e;  --success-soft: #e3f3ea;
+  --warning:          #d49a26;  --warning-soft: #f9edc9;
+  --danger:           #d85c5c;  --danger-soft:  #fae5e5;
+  --info:             #4f93dd;  --info-soft:    #e4eefb;
+
+  /* ── 光照高亮（单一色相柔光，限 hero 笔刷/卡片光带 ≤2处）──
+     —— 不是双拼撞色，是同源浅樱的一抹光晕。 */
+  --glow-1:           #fbe6f0;
+  --glow-2:           #fef7fb;
+  --glow: linear-gradient(108deg, var(--glow-2) 0%, var(--glow-1) 50%, var(--glow-2) 100%);
+  --glow-wash: radial-gradient(120% 90% at 78% 18%, var(--glow-1) 0%, transparent 62%);
+
+  /* ── 阴影（暖中性，靠边框分层，阴影只给抬升）── */
+  --shadow-xs:  0 1px 2px rgba(70,60,75,.05);
+  --shadow-s:   0 1px 2px rgba(70,60,75,.05), 0 2px 8px rgba(70,60,75,.06);
+  --shadow:     0 1px 2px rgba(70,60,75,.05), 0 6px 20px rgba(70,60,75,.07);
+  --shadow-l:   0 4px 14px rgba(70,60,75,.09), 0 20px 48px rgba(70,60,75,.11);
+  --shadow-focus: 0 0 0 3px var(--accent-soft);
+
+  /* ── −12° 斜纹装饰条（signature）──────────── */
+  --stripe: repeating-linear-gradient(-57deg,
+    var(--accent-soft) 0 3px, transparent 3px 9px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   默认 · 深色 · 中性墨夜骨架
+   ══════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:               #161318;
+  --bg-subtle:        #1c191f;
+  --bg-tint:          #242029;
+  --bg-tint-2:        #232634;
+  --surface:          #1d1a22;
+  --surface-raised:   #272430;
+  --surface-sunken:   #141117;
+  --surface-overlay:  rgba(22,19,24,.82);
+
+  --border:           #302c37;
+  --border-strong:    #443f4d;
+  --border-focus:     var(--accent);
+
+  --text:             #f0ecf3;
+  --text-2:           #aaa3b1;
+  --text-3:           #746d7c;
+  --text-invert:      #161318;
+  --text-link:        var(--accent);
+
+  --accent:           #f48fc4;
+  --accent-hover:     #f7a3d0;
+  --accent-active:    #e87bbb;
+  --accent-soft:      #43233a;
+  --accent-line:      #5e3450;
+  --on-accent:        #2a1320;
+
+  --accent-2:         #a6a6f6;
+  --accent-2-hover:   #b8b8fa;
+  --accent-2-soft:    #2c2c54;
+  --on-accent-2:      #0e0e2c;
+
+  --success:          #62cc97;  --success-soft: #18382a;
+  --warning:          #e8bb46;  --warning-soft: #382c10;
+  --danger:           #ef7878;  --danger-soft:  #3a1818;
+  --info:             #79b4f2;  --info-soft:    #182b42;
+
+  --glow-1:           #3f2438;
+  --glow-2:           #241a26;
+  --glow: linear-gradient(108deg, var(--glow-2) 0%, var(--glow-1) 50%, var(--glow-2) 100%);
+  --glow-wash: radial-gradient(120% 90% at 78% 18%, var(--glow-1) 0%, transparent 62%);
+
+  --shadow-xs:  0 1px 2px rgba(0,0,0,.28);
+  --shadow-s:   0 1px 3px rgba(0,0,0,.32), 0 2px 8px rgba(0,0,0,.3);
+  --shadow:     0 1px 2px rgba(0,0,0,.32), 0 8px 24px rgba(0,0,0,.4);
+  --shadow-l:   0 6px 20px rgba(0,0,0,.45), 0 24px 56px rgba(0,0,0,.55);
+  --shadow-focus: 0 0 0 3px var(--accent-soft);
+
+  --stripe: repeating-linear-gradient(-57deg,
+    var(--accent-soft) 0 3px, transparent 3px 9px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   配色补丁 · 只换 accent 家族，骨架继承中性
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 墨 Sumi · 纯黑白（连 accent 都降为墨灰）── */
+[data-palette="sumi"] {
+  --accent:        #2c2830;
+  --accent-hover:  #1d1a22;
+  --accent-active: #110f15;
+  --accent-soft:   #ecebed;
+  --accent-line:   #d6d3d8;
+  --on-accent:     #ffffff;
+  --glow-1:        #eeecee;
+  --glow-2:        #fafafa;
+}
+[data-palette="sumi"][data-theme="dark"] {
+  --accent:        #ece8ef;
+  --accent-hover:  #ffffff;
+  --accent-active: #d4cfd8;
+  --accent-soft:   #2e2a35;
+  --accent-line:   #423d4a;
+  --on-accent:     #1a1720;
+  --glow-1:        #2a2630;
+  --glow-2:        #201d26;
+}
+
+/* ── 青苔 Koke · 夏 ── */
+[data-palette="moss"] {
+  --accent:        #6f8f3f;
+  --accent-hover:  #5f7f31;
+  --accent-active: #4f6f24;
+  --accent-soft:   #e9efcf;
+  --accent-line:   #cdd9a8;
+  --accent-2:      #5fa28b;
+  --accent-2-soft: #dceee6;
+  --glow-1:        #e3ecc4;
+  --glow-2:        #f6f9e8;
+}
+[data-palette="moss"][data-theme="dark"] {
+  --accent:        #a9c46c;
+  --accent-hover:  #bbd47e;
+  --accent-active: #97b25c;
+  --accent-soft:   #353f1c;
+  --accent-line:   #4a5630;
+  --accent-2:      #8cc7af;
+  --accent-2-soft: #1d4537;
+  --on-accent:     #1c2207;
+  --glow-1:        #333d22;
+  --glow-2:        #23291a;
+}
+
+/* ── 蜜柑 Mikan · 秋 ── */
+[data-palette="mikan"] {
+  --accent:        #ef9426;
+  --accent-hover:  #df8416;
+  --accent-active: #c8740d;
+  --accent-soft:   #fde8c8;
+  --accent-line:   #f3d29c;
+  --accent-2:      #45aec4;
+  --accent-2-soft: #d9f0f8;
+  --glow-1:        #f6e2c0;
+  --glow-2:        #fdf6e8;
+}
+[data-palette="mikan"][data-theme="dark"] {
+  --accent:        #ffb35a;
+  --accent-hover:  #ffc36a;
+  --accent-active: #efa348;
+  --accent-soft:   #45300f;
+  --accent-line:   #5e4521;
+  --accent-2:      #6fd2ee;
+  --accent-2-soft: #12404f;
+  --on-accent:     #2a1c06;
+  --glow-1:        #43321c;
+  --glow-2:        #2c2317;
+}
+
+/* ── 雾凇 Musou · 冬 ── */
+[data-palette="frost"] {
+  --accent:        #4f8bc0;
+  --accent-hover:  #3f7bb0;
+  --accent-active: #316ba0;
+  --accent-soft:   #dde9f6;
+  --accent-line:   #b6d0e8;
+  --accent-2:      #45aec4;
+  --accent-2-soft: #d6eef3;
+  --glow-1:        #d3e3f1;
+  --glow-2:        #eff6fc;
+}
+[data-palette="frost"][data-theme="dark"] {
+  --accent:        #7fb3dd;
+  --accent-hover:  #92c3ea;
+  --accent-active: #6da1cb;
+  --accent-soft:   #1f3a55;
+  --accent-line:   #2f4e6c;
+  --accent-2:      #6fd0e2;
+  --accent-2-soft: #123d47;
+  --on-accent:     #0c1c2b;
+  --glow-1:        #243646;
+  --glow-2:        #1a2632;
+}

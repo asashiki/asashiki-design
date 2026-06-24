@@ -1,0 +1,28 @@
+<!-- @dsCard group="Effects" viewport="700x180" name="−12° 斜切 Signature" subtitle="全站唯一记忆点 · 一屏 ≤ 3 处 · eyebrow / 状态标签 / 进度尾 / 卡片角" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 26px 28px; }
+  .grid { display: flex; gap: 36px; align-items: center; flex-wrap: wrap; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font: var(--t-label); color: var(--accent); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+  .eyebrow::before { content:""; width: 22px; height: 10px; background: var(--accent); transform: skewX(var(--skew)); border-radius: 2px; }
+  .tag { display:inline-block; background: var(--accent-soft); color: var(--accent); font: var(--t-label); padding: 4px 12px; border-radius: var(--radius-s); transform: skewX(var(--skew)); }
+  .tag span { display:inline-block; transform: skewX(calc(var(--skew) * -1)); }
+  .bar { width: 150px; height: 10px; background: var(--bg-tint); border-radius: 5px; overflow: hidden; }
+  .bar i { display:block; height: 100%; width: 68%; background: var(--accent); clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%); }
+  .stripe { width: 90px; height: 56px; background: var(--stripe); border-radius: var(--radius-s); }
+  .cap { font: var(--t-caption); color: var(--text-3); margin-top: 8px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div><div class="eyebrow">Asashiki Design</div><div class="cap">eyebrow 色块</div></div>
+    <div><div class="tag"><span>SYNCED</span></div><div class="cap">状态标签</div></div>
+    <div><div class="bar"><i></i></div><div class="cap">进度条尾端切角（单色，不撞色）</div></div>
+    <div><div class="stripe"></div><div class="cap">--stripe 装饰条</div></div>
+  </div>
+</body>
+</html>

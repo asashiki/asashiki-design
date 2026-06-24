@@ -1,0 +1,160 @@
+<!-- @dsCard group="Showcase" viewport="1280x760" name="项目展示站 · 首页" subtitle="show.asashiki.com 的 v2 复刻 · Lucide 图标取代 emoji" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light" data-palette="sakura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asashiki · 项目展示</title>
+<script>
+  (function(){ try {
+    var r = document.documentElement;
+    r.setAttribute('data-theme', localStorage.getItem('ad-theme') || 'light');
+    r.setAttribute('data-palette', localStorage.getItem('ad-palette') || 'sakura');
+  } catch(e){} })();
+</script>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); -webkit-font-smoothing: antialiased; transition: background var(--ease), color var(--ease); }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max-layout); margin: 0 auto; padding: 0 28px; }
+
+  /* nav */
+  .nav { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--surface-overlay); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+  .nav .in { display: flex; align-items: center; gap: 22px; height: 60px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; }
+  .brand img { width: 32px; height: 32px; }
+  .brand b { font: var(--d-title); font-size: 20px; }
+  .navlink { font: var(--t-small); color: var(--text-2); }
+  .navlink:hover { color: var(--text); }
+  .sp { flex: 1; }
+  .nav .ctrls { display: flex; align-items: center; gap: 8px; }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: var(--glow-wash); pointer-events: none; }
+  .hero .in { position: relative; padding: 76px 0 56px; }
+  .hero h1 { font: var(--d-hero); letter-spacing: var(--tracking-tight); margin: 18px 0 0; max-width: 16ch; }
+  .hero h1 em { font-style: normal; background: var(--glow); background-size: 100% 42%; background-position: 0 88%; background-repeat: no-repeat; padding: 0 4px; }
+  .hero .lead { font: var(--t-lead); color: var(--text-2); max-width: 60ch; margin: 22px 0 28px; }
+  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* projects */
+  section.projects { padding: 18px 0 80px; }
+  .sechead-row { display: flex; align-items: baseline; gap: 16px; margin: 40px 0 22px; }
+  .sechead-row p { font: var(--t-small); color: var(--text-2); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 920px){ .grid { grid-template-columns: 1fr 1fr; } }
+  .pcard { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+  .pcard .top { display: flex; align-items: center; gap: 12px; }
+  .pcard .ic { width: 42px; height: 42px; border-radius: var(--radius-m); background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pcard .ic svg { width: 21px; height: 21px; stroke-width: 1.9; }
+  .pcard h3 { font: var(--t-title); margin: 0; }
+  .pcard p { font: var(--t-small); color: var(--text-2); margin: 0; line-height: 1.62; flex: 1; }
+  .pcard .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pcard .links { display: flex; gap: 16px; align-items: center; padding-top: 4px; border-top: 1px dashed var(--border); margin-top: 2px; }
+  .pcard .links a { font: var(--t-label); color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
+  .pcard .links a.muted { color: var(--text-2); margin-left: auto; }
+  .pcard .links svg { width: 13px; height: 13px; }
+
+  footer { border-top: 1px solid var(--border); padding: 26px 0; }
+  footer .in { display: flex; align-items: center; gap: 18px; font: var(--t-caption); color: var(--text-3); }
+  footer a { color: var(--text-2); }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script type="text/babel">
+const { Button, Tag, Badge, Card, Segmented, IconButton, Eyebrow } = window.AsashikiDesignSystem_ddff7e;
+const I = (n, s) => <i data-lucide={n} style={{ width: s||16, height: s||16 }}></i>;
+
+const PROJECTS = [
+  { ic:'git-fork', name:'mcp-switch', live:true, desc:'自托管 MCP 聚合网关：本地 stdio 与远程 HTTP 服务聚合到一个 OAuth 端点，任何 AI 连一次就能用上全部工具。', tags:['mcp','gateway','oauth'], demo:'查看控制台演示' },
+  { ic:'sticker', name:'sticker-mcp', live:true, desc:'让 AI 在对话里发表情包：内联 MCP Apps 组件 + 网页后台，可按心情检索、还能让 AI 自己上传新表情。', tags:['mcp-apps','sticker'], demo:'查看演示' },
+  { ic:'volume-2', name:'voice-send-mcp', desc:'对话内语音气泡：MiniMax / OpenAI / ElevenLabs / Edge 多家 TTS，生成可直接播放的语音组件。', tags:['tts','voice'] },
+  { ic:'music', name:'music-mcp', desc:'对话内音乐播放器：基于 Meting 源，支持搜索、歌单、同步歌词，直接在聊天里播放。', tags:['music','lyrics'] },
+  { ic:'dices', name:'reel-rando-mcp', desc:'选择困难终结者：把选项变成对话里可玩的老虎机 / 转盘 / 抽卡交互。', tags:['randomizer','slot'] },
+  { ic:'smartphone', name:'device-timeline-mcp', desc:'Android / iOS / Windows / macOS 实时时间线上传，附测试页与 API 文档，并为各 Agent 提供 MCP 接入。', tags:['timeline','mcp'] },
+  { ic:'clapperboard', name:'nico-danmaku-api', desc:'给播放器弹幕源加一个链接，就能在 Emby 等播放器里看 niconico 弹幕。', tags:['danmaku','api'] },
+  { ic:'palette', name:'asashiki-design', desc:'浅仪式设计系统：墨白为底、樱粉点缀、四季配色，面向 AI / Agent 的通用视觉规范。本站即由它驱动。', tags:['design-system','tokens'] },
+];
+
+function App() {
+  const [theme, setTheme] = React.useState(() => document.documentElement.getAttribute('data-theme') || 'light');
+  const [pal, setPal] = React.useState(() => document.documentElement.getAttribute('data-palette') || 'sakura');
+  React.useEffect(() => { document.documentElement.setAttribute('data-theme', theme); try{localStorage.setItem('ad-theme',theme)}catch(e){} }, [theme]);
+  React.useEffect(() => { document.documentElement.setAttribute('data-palette', pal); try{localStorage.setItem('ad-palette',pal)}catch(e){}; setTimeout(()=>lucide.createIcons(),20); }, [pal]);
+  React.useEffect(() => { lucide.createIcons(); });
+
+  return (
+    <div className="ad-root">
+      <nav className="nav"><div className="wrap in">
+        <a className="brand" href="#"><img src="../../assets/brand/asashiki-mark-color-t.png" alt="" /><b>Asashiki</b></a>
+        <a className="navlink" href="#projects">项目</a>
+        <a className="navlink" href="#">文档</a>
+        <a className="navlink" href="#">GitHub</a>
+        <span className="sp"></span>
+        <div className="ctrls">
+          <Segmented value={pal} onChange={setPal} items={[
+            {key:'sakura',label:'樱'},{key:'sumi',label:'墨'},{key:'moss',label:'苔'},{key:'mikan',label:'柑'},{key:'frost',label:'凇'}
+          ]} />
+          <IconButton outline label="明暗切换" icon={I(theme==='light'?'moon':'sun',18)} onClick={()=>setTheme(theme==='light'?'dark':'light')} />
+        </div>
+      </div></nav>
+
+      <header className="hero"><div className="wrap in">
+        <Eyebrow>在线展示 · LIVE DEMOS</Eyebrow>
+        <h1>把工具，<br/>放进<em>对话</em>里。</h1>
+        <p className="lead">浅仪式出品的一组 MCP 服务与小工具 —— 让 AI 能在聊天中发表情、说话、放音乐、抽选、看设备时间线。下面每张卡片都可点开实时演示。</p>
+        <div className="cta">
+          <Button icon={I('arrow-down')} onClick={()=>document.getElementById('projects').scrollIntoView({behavior:'smooth'})}>浏览项目</Button>
+          <Button variant="ghost" icon={I('github')}>全部仓库</Button>
+        </div>
+      </div></header>
+
+      <section className="projects" id="projects"><div className="wrap">
+        <div className="sechead-row">
+          <span className="ad-sechead__title">项目</span>
+          <span className="ad-sechead__jp">PROJECTS</span>
+          <p style={{marginLeft:'auto'}}>对话内交互（MCP Apps）为主，旁附实用小服务</p>
+        </div>
+        <div className="grid">
+          {PROJECTS.map(p => (
+            <Card key={p.name} raised interactive deco={p.live} className="pcard">
+              <div className="top">
+                <span className="ic">{I(p.ic,21)}</span>
+                <h3>{p.name}</h3>
+                {p.live && <Badge tone="success" dot style={{marginLeft:'auto'}}>LIVE</Badge>}
+              </div>
+              <p>{p.desc}</p>
+              <div className="tags">{p.tags.map(t => <Tag key={t}>{t}</Tag>)}</div>
+              <div className="links">
+                {p.demo && <a href="#">{p.demo} →</a>}
+                <a className="muted" href="#">{I('github',13)} GitHub</a>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div></section>
+
+      <footer><div className="wrap in">
+        <span>浅仪式 Asashiki · 项目展示</span>
+        <span className="sp" style={{flex:1}}></span>
+        <a href="#">文档</a><a href="#">GitHub</a>
+        <span style={{color:'var(--text-3)'}}>由 Cloudflare Pages 托管 · Asashiki Design 驱动</span>
+      </div></footer>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+setTimeout(()=>lucide.createIcons(), 80);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="间距 Scale" subtitle="4px 基准 · 2 4 8 12 16 20 24 32 40 48 64 80 96" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 22px; }
+  .grid { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+  .item { text-align: center; }
+  .bar { background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 3px; margin: 0 auto 6px; }
+  .item b { font-size: 11px; display: block; }
+  .item code { font-family: var(--mono); font-size: 10px; color: var(--text-3); }
+</style>
+</head>
+<body>
+  <div class="grid" id="g"></div>
+  <script>
+    const vals = [['1',2],['2',4],['3',8],['4',12],['5',16],['6',20],['7',24],['8',32],['9',40],['10',48],['11',64],['12',80]];
+    document.getElementById('g').innerHTML = vals.map(([n,v]) =>
+      `<div class="item"><div class="bar" style="width:${Math.max(v,6)}px;height:${Math.min(v,64)+4}px"></div><b>sp-${n}</b><code>${v}px</code></div>`).join('');
+  </script>
+</body>
+</html>

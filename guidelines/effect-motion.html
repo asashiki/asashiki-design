@@ -1,0 +1,24 @@
+<!-- @dsCard group="Effects" viewport="700x150" name="动效 Motion" subtitle="动效服务信息不做装饰 · 5 档时长 · 默认缓动克制回弹" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 22px 28px; }
+  .row { display: flex; align-items: center; gap: 14px; padding: 6px 0; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  code { font-family: var(--mono); font-size: 12px; }
+  .v { color: var(--accent); width: 56px; }
+  .n { width: 110px; }
+  .s { color: var(--text-2); font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="dot"></span><code class="n">--dur-instant</code><code class="v">80ms</code><span class="s">hover 色变 / 描边</span></div>
+  <div class="row"><span class="dot"></span><code class="n">--dur-fast</code><code class="v">160ms</code><span class="s">按钮状态 / switch</span></div>
+  <div class="row"><span class="dot"></span><code class="n">--dur-normal</code><code class="v">240ms</code><span class="s">卡片展开 / panel 切换（最常用）</span></div>
+  <div class="row"><span class="dot"></span><code class="n">--dur-slow</code><code class="v">400ms</code><span class="s">模态入场 / 页面过渡</span></div>
+  <div class="row"><span class="dot"></span><code class="n">--dur-lazy</code><code class="v">600ms</code><span class="s">loading / 大区块布局</span></div>
+</body>
+</html>

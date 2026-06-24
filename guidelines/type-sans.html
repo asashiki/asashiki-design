@@ -1,0 +1,24 @@
+<!-- @dsCard group="Type" viewport="700x300" name="无衬线字阶 Sans" subtitle="UI / 正文系统栈 · 靠留白与色阶分层，不靠加粗堆叠" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 22px 28px; }
+  .row { padding: 7px 0; border-bottom: 1px dashed var(--border); display: flex; align-items: baseline; gap: 18px; }
+  .row:last-child { border-bottom: none; }
+  .tag { font-family: var(--mono); font-size: 11px; color: var(--text-3); width: 130px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tag">hero · 42/700</span><span style="font:var(--t-hero)">把工具放进对话</span></div>
+  <div class="row"><span class="tag">display · 28/700</span><span style="font:var(--t-display)">区块大标题</span></div>
+  <div class="row"><span class="tag">title · 19/650</span><span style="font:var(--t-title)">卡片与弹层标题</span></div>
+  <div class="row"><span class="tag">lead · 17/400</span><span style="font:var(--t-lead);color:var(--text-2)">引导文字，比正文大一档，用于副标。</span></div>
+  <div class="row"><span class="tag">body · 14/400</span><span style="font:var(--t-body)">正文 14px / 行高 1.65，中日混排同字号。</span></div>
+  <div class="row"><span class="tag">small · 13/400</span><span style="font:var(--t-small);color:var(--text-2)">辅助说明，降一档到 text-2。</span></div>
+  <div class="row"><span class="tag">caption · 12/400</span><span style="font:var(--t-caption);color:var(--text-3)">注释 / 时间戳 · text-3</span></div>
+  <div class="row"><span class="tag">label · 12/600</span><span style="font:var(--t-label);letter-spacing:.06em">表单标签 · TAG LABEL</span></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/* ============================================================
+   Asashiki Design · scale.css  v2.0
+   ------------------------------------------------------------
+   非颜色 / 非字体的尺度系统：间距 · 圆角 · 阴影别名 · z-index ·
+   动效时长缓动 · 内容宽度 · signature 斜切。
+   （阴影具体值随主题在 colors.css 定义；此处只放与主题无关的尺度。）
+   ============================================================ */
+:root {
+  /* ── 间距 Spacing（4px 基准）──────────────── */
+  --sp-1:  2px;
+  --sp-2:  4px;
+  --sp-3:  8px;
+  --sp-4:  12px;
+  --sp-5:  16px;
+  --sp-6:  20px;
+  --sp-7:  24px;
+  --sp-8:  32px;
+  --sp-9:  40px;
+  --sp-10: 48px;
+  --sp-11: 64px;
+  --sp-12: 80px;
+  --sp-13: 96px;
+
+  /* ── 圆角（只用三档 + 全圆）──────────────── */
+  --radius-s:    7px;    /* tag / input 内小块 */
+  --radius-m:    10px;   /* 按钮 / 输入框 */
+  --radius-l:    14px;   /* 卡片 / 面板 / 弹层 */
+  --radius-full: 9999px; /* 头像 / 徽章 / pill */
+
+  /* ── Signature：全站统一 −12° 斜切 ──────── */
+  --skew: -12deg; /* @kind other */
+
+  /* ── z-index ─────────────────────────────── */
+  --z-base:     0;   /* @kind other */
+  --z-raised:   10;  /* @kind other */
+  --z-dropdown: 200; /* @kind other */
+  --z-sticky:   300; /* @kind other */
+  --z-overlay:  400; /* @kind other */
+  --z-modal:    500; /* @kind other */
+  --z-toast:    600; /* @kind other */
+  --z-tip:      700; /* @kind other */
+
+  /* ── 动效时长 ────────────────────────────── */
+  --dur-instant: 80ms;  /* @kind other */
+  --dur-fast:    160ms; /* @kind other */
+  --dur-normal:  240ms; /* @kind other */
+  --dur-slow:    400ms; /* @kind other */
+  --dur-lazy:    600ms; /* @kind other */
+
+  /* ── 缓动曲线 ────────────────────────────── */
+  --ease-default: cubic-bezier(.2,.0,.0,1);     /* @kind other */ /* 标准 */
+  --ease-spring:  cubic-bezier(.2,.85,.3,1.12); /* @kind other */ /* 弹性 */
+  --ease-out:     cubic-bezier(.0,.0,.2,1);     /* @kind other */ /* 减速 */
+  --ease-in:      cubic-bezier(.4,.0,1,1);      /* @kind other */ /* 加速 */
+  --ease: var(--dur-normal) var(--ease-default); /* 速记 @kind other */
+
+  /* ── 内容宽度 ────────────────────────────── */
+  --max-prose:  680px;   /* 长文阅读 */
+  --max-layout: 1080px;  /* 标准页面 */
+  --max-wide:   1280px;  /* 宽屏仪表盘 */
+}
+
+/* 尊重「减少动态效果」系统偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x172" name="四季 + 墨 Palettes" subtitle="配色补丁只换 accent 家族，骨架恒为中性 · data-palette" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 20px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pal { width: 122px; border: 1px solid var(--border); border-radius: var(--radius-l); overflow: hidden; background: var(--surface); }
+  .band { display: flex; height: 46px; }
+  .band i { flex: 1; }
+  .meta { padding: 8px 10px; }
+  .meta b { font: var(--t-label); display: block; }
+  .meta code { font-family: var(--mono); font-size: 10px; color: var(--text-3); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="pal" data-palette="sakura"><div class="band"><i style="background:var(--accent)"></i><i style="background:var(--accent-soft)"></i></div><div class="meta"><b>樱羽 · 春</b><code>sakura ·缺省</code></div></div>
+    <div class="pal" data-palette="sumi"><div class="band"><i style="background:var(--accent)"></i><i style="background:var(--accent-soft)"></i></div><div class="meta"><b>墨 · 黑白</b><code>sumi</code></div></div>
+    <div class="pal" data-palette="moss"><div class="band"><i style="background:var(--accent)"></i><i style="background:var(--accent-soft)"></i></div><div class="meta"><b>青苔 · 夏</b><code>moss</code></div></div>
+    <div class="pal" data-palette="mikan"><div class="band"><i style="background:var(--accent)"></i><i style="background:var(--accent-soft)"></i></div><div class="meta"><b>蜜柑 · 秋</b><code>mikan</code></div></div>
+    <div class="pal" data-palette="frost"><div class="band"><i style="background:var(--accent)"></i><i style="background:var(--accent-soft)"></i></div><div class="meta"><b>雾凇 · 冬</b><code>frost</code></div></div>
+  </div>
+</body>
+</html>

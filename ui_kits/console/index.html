@@ -1,0 +1,240 @@
+<!-- @dsCard group="Console" viewport="1320x840" name="MCP Switch · 控制台" subtitle="聚合网关管理台 · 侧栏 + 服务器注册表 + 审计 · 仪表盘样板" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light" data-palette="sakura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Switch · 控制台</title>
+<script>
+  (function(){ try { var r=document.documentElement;
+    r.setAttribute('data-theme', localStorage.getItem('ad-theme')||'light');
+    r.setAttribute('data-palette', localStorage.getItem('ad-palette')||'sakura'); }catch(e){} })();
+</script>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg-subtle); color: var(--text); font-family: var(--font); -webkit-font-smoothing: antialiased; transition: background var(--ease), color var(--ease); }
+  #root { height: 100vh; }
+  .app { display: grid; grid-template-columns: 232px 1fr; height: 100%; }
+
+  /* sidebar */
+  .side { background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+  .side .brand { display: flex; align-items: center; gap: 10px; padding: 18px 18px 14px; }
+  .side .brand img { width: 30px; height: 30px; }
+  .side .brand .nm { line-height: 1; }
+  .side .brand .nm b { font: var(--d-title); font-size: 17px; white-space: nowrap; }
+  .side .brand .nm small { font: var(--t-caption); color: var(--text-3); display: block; margin-top: 3px; letter-spacing: .04em; }
+  .side nav { padding: 10px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .navitem { display: flex; align-items: center; gap: 11px; padding: 9px 12px; border-radius: var(--radius-m); font: var(--t-body); font-weight: 500; color: var(--text-2); cursor: pointer; border: none; background: none; text-align: left; transition: background var(--dur-fast) var(--ease-default), color var(--dur-fast) var(--ease-default); }
+  .navitem:hover { background: var(--bg-tint); color: var(--text); }
+  .navitem.on { background: var(--accent-soft); color: var(--accent); }
+  .navitem svg { width: 17px; height: 17px; stroke-width: 2; }
+  .navitem .ct { margin-left: auto; font: var(--t-caption); font-family: var(--mono); opacity: .7; }
+  .side .foot { padding: 12px; border-top: 1px solid var(--border); }
+  .gw { display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: var(--radius-m); background: var(--bg-tint); }
+  .gw .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 3px var(--success-soft); }
+  .gw .tx { line-height: 1.2; }
+  .gw .tx b { font: var(--t-small); font-weight: 600; }
+  .gw .tx small { font: var(--t-caption); color: var(--text-3); font-family: var(--mono); }
+
+  /* main */
+  .main { display: flex; flex-direction: column; min-width: 0; }
+  .topbar { display: flex; align-items: center; gap: 16px; padding: 0 26px; height: 62px; background: var(--surface-overlay); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: var(--z-sticky); }
+  .topbar h1 { font: var(--t-display); font-size: 22px; margin: 0; }
+  .topbar .ep { font: var(--t-mono); font-size: 12px; color: var(--text-3); background: var(--bg-tint); border: 1px solid var(--border); padding: 4px 9px; border-radius: var(--radius-s); }
+  .topbar .sp { flex: 1; }
+  .content { padding: 24px 26px 40px; overflow: auto; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .statcard { display: flex; flex-direction: column; gap: 6px; }
+  .statcard .hd { display: flex; align-items: center; gap: 8px; font: var(--t-caption); color: var(--text-2); }
+  .statcard .hd svg { width: 14px; height: 14px; color: var(--text-3); }
+
+  .panel-head { display: flex; align-items: center; gap: 14px; margin: 4px 0 14px; }
+  .panel-head .ad-sechead__title { font-size: 19px; }
+
+  /* server table */
+  .srv { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border: 1px solid var(--border); border-radius: var(--radius-l); background: var(--surface); cursor: pointer; transition: border-color var(--dur-fast) var(--ease-default), box-shadow var(--dur-fast) var(--ease-default); margin-bottom: 10px; }
+  .srv:hover { border-color: var(--border-strong); box-shadow: var(--shadow-s); }
+  .srv.sel { border-color: var(--accent-line); box-shadow: var(--shadow-focus); }
+  .srv .ic { width: 38px; height: 38px; border-radius: var(--radius-m); background: var(--bg-tint); color: var(--text-2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .srv .ic svg { width: 19px; height: 19px; }
+  .srv .meta { min-width: 0; }
+  .srv .meta b { font: var(--t-body); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .srv .meta small { font: var(--t-caption); color: var(--text-3); font-family: var(--mono); }
+  .srv .tools { font: var(--t-caption); color: var(--text-2); white-space: nowrap; }
+  .srv .tools b { font-family: var(--mono); color: var(--text); }
+  .srv .sp { flex: 1; }
+
+  .layout2 { display: grid; grid-template-columns: 1fr 340px; gap: 22px; align-items: start; }
+  @media (max-width: 1080px){ .layout2 { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr 1fr; } }
+
+  .audit { display: flex; flex-direction: column; gap: 0; }
+  .audit .row { display: flex; gap: 11px; padding: 11px 0; border-bottom: 1px dashed var(--border); }
+  .audit .row:last-child { border-bottom: none; }
+  .audit .row .av { margin-top: 1px; }
+  .audit .row .tx { min-width: 0; }
+  .audit .row .tx b { font: var(--t-small); font-weight: 600; }
+  .audit .row .tx p { font: var(--t-caption); color: var(--text-2); margin: 2px 0 0; }
+  .audit .row .tm { margin-left: auto; font: var(--t-mono); font-size: 11px; color: var(--text-3); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script type="text/babel">
+const { Badge, Tag, Switch, IconButton, Button, Stat, Tabs, Avatar, Card, Tooltip, Eyebrow } = window.AsashikiDesignSystem_ddff7e;
+const I = (n,s)=> <i data-lucide={n} style={{width:s||16,height:s||16}}></i>;
+
+const NAV = [
+  {key:'overview', ic:'layout-dashboard', label:'总览'},
+  {key:'servers', ic:'server', label:'服务器', ct:'6'},
+  {key:'tools', ic:'wrench', label:'工具', ct:'48'},
+  {key:'agents', ic:'bot', label:'代理', ct:'3'},
+  {key:'audit', ic:'scroll-text', label:'审计日志'},
+  {key:'settings', ic:'settings', label:'设置'},
+];
+
+const SERVERS = [
+  {ic:'book-open-text', name:'context7', transport:'remote', url:'mcp.context7.com/mcp', tools:7, status:'online', on:true},
+  {ic:'sticker', name:'sticker-mcp', transport:'local', url:'npx · stdio', tools:5, status:'online', on:true},
+  {ic:'music', name:'music-mcp', transport:'remote', url:'api.asashiki.com/music', tools:9, status:'online', on:true},
+  {ic:'gamepad-2', name:'steam-mcp', transport:'local', url:'npx · steam-mcp-server', tools:6, status:'online', on:true},
+  {ic:'volume-2', name:'voice-send-mcp', transport:'remote', url:'api.asashiki.com/voice', tools:4, status:'idle', on:true},
+  {ic:'dices', name:'reel-rando-mcp', transport:'local', url:'uvx · stdio', tools:3, status:'offline', on:false},
+];
+
+const AUDIT = [
+  {who:'claude.ai', ic:'sparkles', act:'调用 sticker-mcp · search_stickers', tm:'09:42:18'},
+  {who:'ChatGPT', ic:'message-square', act:'调用 context7 · get-library-docs', tm:'09:41:02'},
+  {who:'console', ic:'user', act:'新增上游 steam-mcp（local stdio）', tm:'09:38:55'},
+  {who:'claude.ai', ic:'sparkles', act:'OAuth 授权 · agent=asashiki', tm:'09:30:11'},
+  {who:'claude.ai', ic:'sparkles', act:'调用 music-mcp · play', tm:'09:28:47'},
+];
+
+function App(){
+  const [theme,setTheme]=React.useState(()=>document.documentElement.getAttribute('data-theme')||'light');
+  const [nav,setNav]=React.useState('servers');
+  const [sel,setSel]=React.useState('context7');
+  const [servers,setServers]=React.useState(SERVERS);
+  React.useEffect(()=>{document.documentElement.setAttribute('data-theme',theme);try{localStorage.setItem('ad-theme',theme)}catch(e){};setTimeout(()=>lucide.createIcons(),20)},[theme]);
+  React.useEffect(()=>{lucide.createIcons()});
+  const toggle = (name)=> setServers(s=>s.map(x=>x.name===name?{...x,on:!x.on,status:!x.on?'online':'offline'}:x));
+  const statusTone = {online:'success', idle:'warning', offline:'danger'};
+  const statusText = {online:'在线', idle:'空闲', offline:'离线'};
+  const cur = servers.find(s=>s.name===sel) || servers[0];
+
+  return (
+    <div className="app ad-root">
+      <aside className="side" data-screen-label="侧栏">
+        <div className="brand"><img src="../../assets/brand/asashiki-mark-color-t.png" alt=""/><div className="nm"><b>MCP Switch</b><small>聚合网关控制台</small></div></div>
+        <nav>
+          {NAV.map(n=>(
+            <button key={n.key} className={'navitem'+(nav===n.key?' on':'')} onClick={()=>setNav(n.key)}>
+              {I(n.ic,17)}<span>{n.label}</span>{n.ct && <span className="ct">{n.ct}</span>}
+            </button>
+          ))}
+        </nav>
+        <div className="foot">
+          <div className="gw"><span className="dot"></span><div className="tx"><b>网关在线</b><small>:4200 · v0.6 beta</small></div></div>
+        </div>
+      </aside>
+
+      <div className="main">
+        <div className="topbar" data-screen-label="顶栏">
+          <h1>服务器</h1>
+          <span className="ep">/mcp · oauth</span>
+          <span className="sp"></span>
+          <Tooltip tip="切换明暗"><IconButton outline label="明暗" icon={I(theme==='light'?'moon':'sun',18)} onClick={()=>setTheme(theme==='light'?'dark':'light')} /></Tooltip>
+          <Button icon={I('plus')}>连接服务器</Button>
+        </div>
+
+        <div className="content" data-screen-label="服务器主视图">
+          <div className="stats">
+            <Card raised className="statcard"><div className="hd">{I('server')}上游服务器</div><Stat num={<>6</>} label="5 在线 · 1 离线" /></Card>
+            <Card raised className="statcard"><div className="hd">{I('wrench')}聚合工具</div><Stat num={<><em>48</em></>} label="跨 6 个上游" /></Card>
+            <Card raised className="statcard"><div className="hd">{I('bot')}在线代理</div><Stat num={<>3</>} label="OAuth 已授权" /></Card>
+            <Card raised className="statcard"><div className="hd">{I('activity')}今日调用</div><Stat num={<><em>1,284</em></>} label="+12% 较昨日" /></Card>
+          </div>
+
+          <div className="layout2">
+            <div>
+              <div className="panel-head">
+                <span className="ad-sechead__title">上游注册表</span>
+                <span className="ad-sechead__jp">Registry</span>
+                <span className="ad-sechead__line"></span>
+              </div>
+              {servers.map(s=>(
+                <div key={s.name} className={'srv'+(sel===s.name?' sel':'')} onClick={()=>setSel(s.name)}>
+                  <span className="ic">{I(s.ic,19)}</span>
+                  <div className="meta">
+                    <b>{s.name}
+                      {s.transport==='local'
+                        ? <Tag variant="line">local</Tag>
+                        : <Tag variant="accent">remote</Tag>}
+                    </b>
+                    <small>{s.url}</small>
+                  </div>
+                  <span className="sp"></span>
+                  <span className="tools"><b>{s.tools}</b> 工具</span>
+                  <Badge tone={statusTone[s.status]} dot>{statusText[s.status]}</Badge>
+                  <div onClick={e=>e.stopPropagation()}><Switch checked={s.on} onChange={()=>toggle(s.name)} /></div>
+                </div>
+              ))}
+            </div>
+
+            <Card raised glow data-screen-label="详情面板">
+              <Eyebrow>Upstream</Eyebrow>
+              <div className="ad-card__title" style={{marginTop:10,display:'flex',alignItems:'center',gap:10}}>
+                <Avatar icon={I(cur.ic,20)} />{cur.name}
+              </div>
+              <div className="ad-card__sub" style={{fontFamily:'var(--mono)'}}>{cur.url}</div>
+              <div style={{display:'flex',gap:8,margin:'14px 0'}}>
+                {cur.transport==='local'?<Tag variant="line">local · stdio</Tag>:<Tag variant="accent">remote · http</Tag>}
+                <Badge tone={statusTone[cur.status]} dot>{statusText[cur.status]}</Badge>
+              </div>
+              <hr className="ad-divider"/>
+              <div style={{display:'flex',justifyContent:'space-between',marginBottom:10}}>
+                <Stat num={<>{cur.tools}</>} label="暴露工具" />
+                <Stat num={<><em>{cur.on?'是':'否'}</em></>} label="已启用" />
+                <Stat num={<>2</>} label="授权代理" />
+              </div>
+              <div style={{display:'flex',gap:8}}>
+                <Button variant="secondary" size="sm" icon={I('list',14)}>查看工具</Button>
+                <Button variant="ghost" size="sm" icon={I('refresh-cw',14)}>重连</Button>
+              </div>
+            </Card>
+          </div>
+
+          <div className="panel-head" style={{marginTop:28}}>
+            <span className="ad-sechead__title">审计日志</span>
+            <span className="ad-sechead__jp">Audit</span>
+            <span className="ad-sechead__line"></span>
+          </div>
+          <Card raised>
+            <div className="audit">
+              {AUDIT.map((a,i)=>(
+                <div className="row" key={i}>
+                  <span className="av"><Avatar icon={I(a.ic,15)} size="sm" round /></span>
+                  <div className="tx"><b>{a.who}</b><p>{a.act}</p></div>
+                  <span className="tm">{a.tm}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+setTimeout(()=>lucide.createIcons(),80);
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!-- @dsCard group="Components" viewport="700x430" name="表单 Forms" subtitle="Button · IconButton · Input · Select · Checkbox · Switch" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); padding: 26px 28px; }
+  .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 36px; align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .ttl { font: var(--t-label); color: var(--text-3); letter-spacing: .08em; text-transform: uppercase; }
+  .inline { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script type="text/babel">
+const { Button, IconButton, Input, Select, Checkbox, Switch } = window.AsashikiDesignSystem_ddff7e;
+const I = (n, s) => <i data-lucide={n} style={{ width: s||15, height: s||15 }}></i>;
+
+function Demo() {
+  const [on, setOn] = React.useState(true);
+  return (
+    <div className="wrap ad-root">
+      <div className="stack">
+        <div className="ttl">Button · 变体</div>
+        <div className="inline">
+          <Button icon={I('refresh-cw')}>同步数据</Button>
+          <Button variant="secondary">详情</Button>
+          <Button variant="ghost">取消</Button>
+          <Button variant="danger">删除</Button>
+        </div>
+        <div className="inline">
+          <Button size="sm">Small</Button>
+          <Button size="lg" icon={I('sparkles',17)}>Large</Button>
+          <Button disabled>Disabled</Button>
+          <IconButton icon={I('settings',18)} label="设置" outline />
+          <IconButton icon={I('heart',18)} label="喜欢" />
+        </div>
+      </div>
+
+      <div className="stack">
+        <div className="ttl">Input · Select</div>
+        <Input label="记忆检索" icon={I('search')} placeholder="输入关键词…" />
+        <Select label="季节配色" options={[{value:'sakura',label:'樱羽 · 春'},{value:'moss',label:'青苔 · 夏'},{value:'mikan',label:'蜜柑 · 秋'}]} />
+      </div>
+
+      <div className="stack">
+        <div className="ttl">Choice</div>
+        <Checkbox label="自动同步健康数据" defaultChecked />
+        <Checkbox label="位置历史记录" />
+        <div style={{maxWidth:240}}><Switch label="夜间免打扰" checked={on} onChange={e=>setOn(e.target.checked)} /></div>
+      </div>
+
+      <div className="stack">
+        <div className="ttl">Input · 错误态</div>
+        <Input label="邮箱" defaultValue="not-an-email" error="邮箱格式不正确" required />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+setTimeout(() => lucide.createIcons(), 60);
+</script>
+</body>
+</html>

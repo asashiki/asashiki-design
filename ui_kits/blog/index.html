@@ -1,0 +1,157 @@
+<!-- @dsCard group="Blog" viewport="940x820" name="博客 · 动画观后感" subtitle="编辑式长文 · 衬线 prose · 墨白为底的随笔气质" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light" data-palette="sakura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>晨光里的留白 · 浅仪式</title>
+<script>
+  (function(){ try { var r=document.documentElement;
+    r.setAttribute('data-theme', localStorage.getItem('ad-theme')||'light');
+    r.setAttribute('data-palette', localStorage.getItem('ad-palette')||'sakura'); }catch(e){} })();
+</script>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); -webkit-font-smoothing: antialiased; transition: background var(--ease), color var(--ease); }
+  a { color: inherit; }
+  .nav { position: sticky; top: 0; z-index: var(--z-sticky); background: var(--surface-overlay); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+  .nav .in { max-width: var(--max-wide); margin: 0 auto; padding: 0 28px; height: 58px; display: flex; align-items: center; gap: 20px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { width: 30px; height: 30px; }
+  .brand b { font: var(--d-title); font-size: 19px; }
+  .nav .navlink { font: var(--t-small); color: var(--text-2); text-decoration: none; }
+  .nav .navlink:hover { color: var(--text); }
+  .nav .sp { flex: 1; }
+
+  .article { max-width: var(--max-prose); margin: 0 auto; padding: 56px 28px 40px; }
+  .meta-top { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .meta-top .who { display: flex; align-items: center; gap: 10px; }
+  .meta-top .who .nm { font: var(--t-small); font-weight: 600; }
+  .meta-top .who .dt { font: var(--t-caption); color: var(--text-3); }
+  h1.title { font: var(--d-hero); font-size: 44px; line-height: 1.12; letter-spacing: var(--tracking-tight); margin: 10px 0 0; text-wrap: balance; }
+  .standfirst { font: var(--d-prose); color: var(--text-2); font-style: italic; margin: 20px 0 0; }
+  .cover { position: relative; height: 200px; border-radius: var(--radius-l); border: 1px solid var(--border); margin: 30px 0 10px; overflow: hidden; background: var(--bg-subtle); }
+  .cover .wash { position: absolute; inset: 0; background: var(--glow-wash); }
+  .cover .mk { position: absolute; right: 26px; bottom: -18px; width: 150px; height: 150px; opacity: .9; }
+  .cover .cap { position: absolute; left: 20px; bottom: 14px; font: var(--t-caption); color: var(--text-3); }
+
+  .prose { font: var(--d-prose); color: var(--text); }
+  .prose p { margin: 22px 0; }
+  .prose h2 { font: var(--t-display); font-family: var(--font); font-size: 23px; margin: 44px 0 4px; }
+  .prose h2 .kicker { display: block; font: var(--t-label); color: var(--accent); letter-spacing: var(--tracking-wide); text-transform: uppercase; margin-bottom: 8px; }
+  .prose blockquote { margin: 30px 0; padding: 6px 0 6px 22px; border-left: 2px solid var(--accent); font: var(--d-quote); font-style: italic; color: var(--text); }
+  .prose code { font: var(--t-mono); background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--radius-s); padding: 1px 6px; }
+  .prose .codeblock { font: var(--t-mono); background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--radius-m); padding: 16px 18px; overflow:auto; color: var(--text-2); line-height: 1.7; }
+  .prose .codeblock b { color: var(--accent); font-weight: 400; }
+
+  .endtags { display: flex; gap: 8px; flex-wrap: wrap; margin: 38px 0 0; }
+  .divider { height: 1px; background: var(--border); border: none; margin: 36px 0; }
+  .nextprev { display: flex; gap: 14px; }
+  .nextprev a { flex: 1; text-decoration: none; }
+  footer { border-top: 1px solid var(--border); margin-top: 40px; }
+  footer .in { max-width: var(--max-prose); margin: 0 auto; padding: 24px 28px; font: var(--t-caption); color: var(--text-3); display: flex; gap: 16px; align-items: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script type="text/babel">
+const { Badge, Tag, Avatar, Progress, Card, IconButton, Segmented } = window.AsashikiDesignSystem_ddff7e;
+const I = (n,s)=> <i data-lucide={n} style={{width:s||16,height:s||16}}></i>;
+
+function App(){
+  const [theme,setTheme]=React.useState(()=>document.documentElement.getAttribute('data-theme')||'light');
+  React.useEffect(()=>{document.documentElement.setAttribute('data-theme',theme);try{localStorage.setItem('ad-theme',theme)}catch(e){};setTimeout(()=>lucide.createIcons(),20)},[theme]);
+  React.useEffect(()=>{lucide.createIcons()});
+  return (
+    <div className="ad-root">
+      <nav className="nav"><div className="in">
+        <a className="brand" href="#"><img src="../../assets/brand/asashiki-mark-color-t.png" alt=""/><b>浅仪式</b></a>
+        <a className="navlink" href="#">随笔</a>
+        <a className="navlink" href="#">观影</a>
+        <a className="navlink" href="#">归档</a>
+        <span className="sp"></span>
+        <IconButton outline label="搜索" icon={I('search',18)} />
+        <IconButton outline label="明暗" icon={I(theme==='light'?'moon':'sun',18)} onClick={()=>setTheme(theme==='light'?'dark':'light')} />
+      </div></nav>
+
+      <article className="article">
+        <Badge tone="accent" icon={I('clapperboard',12)}>观影随笔</Badge>
+        <h1 className="title">晨光里的留白</h1>
+        <p className="standfirst">看完一部日常系动画后，我想聊聊那些「什么都没发生」的镜头，为什么反而最让人安心。</p>
+
+        <div className="meta-top" style={{marginTop:24}}>
+          <div className="who">
+            <Avatar name="浅" round />
+            <div><div className="nm">浅仪式</div><div className="dt">2026 年 6 月 25 日 · 晨</div></div>
+          </div>
+          <span style={{flex:1}}></span>
+          <Badge tone="neutral" icon={I('clock',12)}>约 6 分钟</Badge>
+          <Tag variant="accent" skew>春</Tag>
+        </div>
+
+        <div className="cover"><div className="wash"></div><img className="mk" src="../../assets/brand/asashiki-mark-color-t.png" alt=""/><span className="cap">封面 · --glow-wash 柔光，非撞色渐变</span></div>
+
+        <div className="prose">
+          <p>有些动画的开场，是一段长达十几秒、几乎静止的空镜：窗帘被风掀起一角，光斑在木地板上缓慢移动，远处有电车驶过的声音。没有台词，没有配乐的高潮，只是早晨本身。</p>
+          <p>我曾以为这是「节奏拖沓」。后来才明白，这些留白不是省略，而是一种邀请——邀请你把呼吸放慢到和画面一样的速度。</p>
+
+          <h2><span className="kicker">Stillness</span>静止，也是一种叙事</h2>
+          <p>当镜头愿意停在一杯尚未喝完的咖啡上三秒钟，它其实在说：这一刻值得被记住。日常系作品最擅长的，就是把「无事发生」处理成一种温柔的肯定。</p>
+          <blockquote>「留白即呼吸。画面之外没说的，才是真正想说的。」</blockquote>
+          <p>这也是我给自己的小工具取名 <code>asashiki</code>（浅仪式）的原因：每天清晨那点微不足道的仪式感，本身就足够。</p>
+
+          <h2><span className="kicker">Texture</span>声音的颗粒</h2>
+          <p>真正让这类作品立住的，往往是声音设计。把环境音抬到几乎与人声等高——翻书页、煮水、远处的蝉——观众于是被放进了那个房间里。</p>
+          <div className="codeblock">// 我用来记录每天晨间状态的一行<br/><b>steps</b>=312  <b>light</b>="窗边偏暖"  <b>mood</b>="松弛"  <b>bgm</b>="off"</div>
+
+          <h2><span className="kicker">Afterglow</span>看完之后</h2>
+          <p>好的日常系不会给你一个结论，它只是让你在合上屏幕的瞬间，更愿意去认真地泡一杯茶。如果一部作品能让现实里的早晨也变得值得期待，那它就已经做到了最难的事。</p>
+        </div>
+
+        <div className="endtags">
+          <Tag>日常系</Tag><Tag>观后感</Tag><Tag>留白</Tag><Tag variant="line">声音设计</Tag>
+        </div>
+
+        <hr className="divider"/>
+
+        <Card raised glow>
+          <div style={{display:'flex',alignItems:'center',gap:16}}>
+            <Avatar icon={I('tv',22)} size="lg" />
+            <div style={{flex:1}}>
+              <div className="ad-card__title">本季追番 · 进度</div>
+              <div className="ad-card__sub">日常系 · 全 12 话</div>
+            </div>
+            <Badge tone="success" dot>已完结</Badge>
+          </div>
+          <div style={{marginTop:16}}>
+            <Progress label="观看进度" valueText="12 / 12 话" value={12} max={12} />
+          </div>
+        </Card>
+
+        <hr className="divider"/>
+        <div className="nextprev">
+          <a href="#"><Card interactive><div className="ad-card__sub">← 上一篇</div><div className="ad-card__title" style={{fontSize:16,marginTop:4}}>关于「等一杯水变凉」</div></Card></a>
+          <a href="#"><Card interactive style={{textAlign:'right'}}><div className="ad-card__sub">下一篇 →</div><div className="ad-card__title" style={{fontSize:16,marginTop:4}}>深夜食堂式的剪辑</div></Card></a>
+        </div>
+      </article>
+
+      <footer><div className="in">
+        <span>浅仪式 Asashiki · 一个安静的博客</span><span style={{flex:1}}></span>
+        <a href="#" style={{color:'var(--text-2)',textDecoration:'none'}}>RSS</a>
+        <a href="#" style={{color:'var(--text-2)',textDecoration:'none'}}>GitHub</a>
+      </div></footer>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+setTimeout(()=>lucide.createIcons(),80);
+</script>
+</body>
+</html>

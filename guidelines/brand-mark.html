@@ -1,0 +1,24 @@
+<!-- @dsCard group="Brand" viewport="700x210" name="品牌标记 Logo Mark" subtitle="樱羽主视觉 · 彩色版用于亮底/封面，墨线版用于单色场景" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 26px 28px; }
+  .row { display: flex; gap: 22px; align-items: stretch; }
+  .cell { flex: 1; border: 1px solid var(--border); border-radius: var(--radius-l); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 22px 8px; }
+  .cell img { width: 88px; height: 88px; }
+  .cell.dark { background: #161318; border-color: #302c37; }
+  .cap { font: var(--t-caption); color: var(--text-3); }
+  .cell.dark .cap { color: #746d7c; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="cell"><img src="../assets/brand/asashiki-mark-color-t.png" alt="彩色标记"><div class="cap">彩色 · 亮底</div></div>
+    <div class="cell"><img src="../assets/brand/asashiki-mark-ink-t.png" alt="墨线标记"><div class="cap">墨线 · 单色</div></div>
+    <div class="cell dark"><img src="../assets/brand/asashiki-mark-color-t.png" alt="彩色标记暗底"><div class="cap">彩色 · 暗底（留圆形净空）</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Asashiki 博客长文" description="随笔 / 观后感起点：衬线编辑排版，墨白为底、樱粉点缀" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+</helmet>
+<div data-theme="light" data-palette="sakura" style="font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased">
+
+  <nav style="position:sticky;top:0;z-index:300;background:var(--surface-overlay);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 28px;height:58px;display:flex;align-items:center;gap:20px">
+      <span style="display:inline-flex;align-items:center;gap:10px">
+        <span style="width:28px;height:28px;border-radius:8px;background:var(--accent-soft);display:inline-flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:13px">浅</span>
+        <b style="font:var(--d-title);font-size:18px">浅仪式</b>
+      </span>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">随笔</a>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">观影</a>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">归档</a>
+      <span style="flex:1"></span>
+      <a href="#" style="font:var(--t-small);color:var(--text-2);text-decoration:none">RSS</a>
+    </div>
+  </nav>
+
+  <article style="max-width:680px;margin:0 auto;padding:56px 28px 48px">
+    <span class="ad-badge ad-badge--accent">观影随笔</span>
+    <h1 style="font:var(--d-hero);font-size:44px;line-height:1.12;letter-spacing:-0.014em;margin:14px 0 0;text-wrap:balance">在这里写下标题</h1>
+    <p style="font:var(--d-prose);color:var(--text-2);font-style:italic;margin:18px 0 0">副标 / 导语：用一句斜体衬线交代这篇随笔想聊什么。</p>
+
+    <div style="display:flex;align-items:center;gap:14px;margin:24px 0 0">
+      <span class="ad-avatar ad-avatar--round">浅</span>
+      <div><div style="font:var(--t-small);font-weight:600">浅仪式</div><div style="font:var(--t-caption);color:var(--text-3)">2026 年 6 月 25 日 · 晨</div></div>
+      <span style="flex:1"></span>
+      <span class="ad-badge ad-badge--neutral">约 6 分钟</span>
+      <span class="ad-tag ad-tag--accent ad-tag--skew"><span>春</span></span>
+    </div>
+
+    <div style="position:relative;height:190px;border-radius:14px;border:1px solid var(--border);margin:30px 0 6px;overflow:hidden;background:var(--bg-subtle)">
+      <div style="position:absolute;inset:0;background:var(--glow-wash)"></div>
+      <span style="position:absolute;left:20px;bottom:14px;font:var(--t-caption);color:var(--text-3)">封面 · --glow-wash 柔光，非撞色渐变</span>
+    </div>
+
+    <div style="font:var(--d-prose);color:var(--text)">
+      <p style="margin:22px 0">正文第一段。长文阅读用衬线 prose（19px / 行高 1.78），适合随笔与观后感——一眼松弛、专注内容。把这些段落替换成你的文字。</p>
+      <p style="margin:22px 0">第二段。中日混排同字号，靠留白和颜色分层，不靠加粗堆叠。</p>
+
+      <h2 style="font:var(--t-display);font-family:var(--font);font-size:23px;margin:44px 0 4px"><span style="display:block;font:var(--t-label);color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Section</span>一个小标题</h2>
+      <p style="margin:22px 0">小节正文。需要强调的词用 <code style="font:var(--t-mono);background:var(--surface-sunken);border:1px solid var(--border);border-radius:7px;padding:1px 6px">行内代码</code> 标注。</p>
+      <blockquote style="margin:30px 0;padding:6px 0 6px 22px;border-left:2px solid var(--accent);font:var(--d-quote);font-style:italic;color:var(--text)">「一句值得单独拎出来的话，用斜体衬线大引用。」</blockquote>
+      <p style="margin:22px 0">结尾段。好的随笔不给结论，只是让你合上屏幕时更愿意去认真泡一杯茶。</p>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:38px 0 0">
+      <span class="ad-tag">标签一</span><span class="ad-tag">标签二</span><span class="ad-tag ad-tag--line">标签三</span>
+    </div>
+
+    <hr class="ad-divider" style="margin:36px 0">
+
+    <footer style="font:var(--t-caption);color:var(--text-3);display:flex;gap:16px;align-items:center">
+      <span>浅仪式 Asashiki · 一个安静的博客</span>
+      <span style="flex:1"></span>
+      <a href="#" style="color:var(--text-2);text-decoration:none">上一篇</a>
+      <a href="#" style="color:var(--text-2);text-decoration:none">下一篇</a>
+    </footer>
+  </article>
+</div>
+
+</x-dc>
+</body>
+</html>

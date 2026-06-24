@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="圆角 Radius" subtitle="只用三档 + 全圆 · 超过 14px 即廉价胶囊感，禁用" -->
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); padding: 22px; }
+  .row { display: flex; gap: 22px; align-items: flex-end; }
+  .item { text-align: center; }
+  .box { width: 78px; height: 64px; background: var(--bg-tint); border: 1px solid var(--border-strong); margin-bottom: 8px; }
+  .item b { font: var(--t-label); display: block; }
+  .item code { font-family: var(--mono); font-size: 10.5px; color: var(--text-3); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:var(--radius-s)"></div><b>s · 7px</b><code>--radius-s</code></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-m)"></div><b>m · 10px</b><code>--radius-m</code></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-l)"></div><b>l · 14px</b><code>--radius-l</code></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-full);width:64px"></div><b>full</b><code>--radius-full</code></div>
+  </div>
+</body>
+</html>
