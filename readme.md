@@ -1,3 +1,11 @@
+<div align="center">
+
+<img src="assets/brand/asashiki-mark-color-t.png" alt="Asashiki Design System" width="120">
+
+<sub>**INK & SAKURA · 墨と桜 · DESIGN SYSTEM v2**</sub>
+
+</div>
+
 # 浅仪式 · Asashiki Design System  v2
 
 > **墨と桜 · Ink & Sakura** —— 白底为主，印象色只在该出现的地方出现。
